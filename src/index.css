@@ -13,7 +13,7 @@ cursor: pointer;
 }
 .nav-a{
 	box-sizing: border-box;
-	padding: 0px 10px;
+	padding: 0px 0px 0px 20px;
 	display: flex;
 	margin: 0px auto;
 	width: 1200px;
@@ -32,6 +32,9 @@ cursor: pointer;
 .nav-b:hover{
 	color: #e11;
 }
+.nav-b:nth-last-child(1){
+	padding-right: 5px;
+}
 .nav-b:nth-child(1){
 	border-right:none;
 	padding: 0px;
@@ -41,4 +44,114 @@ cursor: pointer;
 }
 .nav-active{
 	color: #e11;
+}
+/* 搜索栏 */
+.search-{
+	display: flex;
+	width: 1200px;
+	margin: 30px auto 0px;
+}
+.search-a>img{
+	height: 95px;
+	width: 125px;
+}
+.search-b{
+	width: 792px;
+	margin-left: 80px;
+}
+.search-c{
+	align-items: center;
+	margin-left: 60px;
+	display: flex;
+}
+.search-d>input{
+	border-radius: 5px 0px 0px 5px;
+	padding: 8px 15px;
+	border: 1px #e11 solid;
+	border-right: none;
+	outline: none;
+	width: 430px;
+}
+.search-i>button{
+	border: none;
+	background-color: #e11;
+	color: #fff;
+	border-radius: 0px 5px 5px 0px;
+	padding: 8px 18px;
+	margin-right: 20px;
+}
+.search-j>button{
+	border-radius: 5px 5px 5px 5px;
+	padding: 6px 30px;
+	color: #e11;
+	border: 1px solid #ddd;
+	background-color: #fff;
+}
+.search-e{
+	color: #aaa;
+	font-size: 12px;
+	margin: 10px 0px 0px 8px;
+	display: flex;
+}
+.search-active{
+	color:#e11 ;
+}
+.search-f{
+	cursor: pointer;
+	margin-right: 13px;
+}
+.search-g{
+	color: #999;
+	margin-top: 20px;
+	display: flex;
+}
+.search-h{
+	cursor: pointer;
+	margin-right: 24px;
+}
+.search-h:nth-last-child(1){
+	margin-right: 0px;
+}
+/* 页脚 */
+.below{
+	
+	background-color: #444;
+	margin: 20px auto 0px;
+	padding: 20px 0px;
+}
+.below_{
+	width: 1190px;
+	margin: 0px auto;
+	display: flex;
+	justify-content: space-between;
+}
+.below_left{
+	display: flex;
+}
+.below_left_first{
+	font-size: 12px;
+	color: #aaa;;
+	margin-right: 40px;
+}
+.below_left_top1{
+	color: #e11;
+}
+.below_left_second{
+	font-size: 12px;
+	color: #aaa;
+	margin-right: 40px;
+}
+.below_left_top{
+	font-size: 14px;
+	color: ##aaa;
+}
+.below_left{
+	display: flex;
+}
+.qr_code{
+	text-align: center;
+	width: 104px;
+	font-size: 14px;
+	color: #c2c2c2;
+	margin-left: 40px;
 }
