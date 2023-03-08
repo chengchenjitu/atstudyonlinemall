@@ -1,8 +1,16 @@
+
 <template>
-	
-	<router-view/>
+	<Nav></Nav>
 </template>
 
-<style>
 
+<script>
+	import Nav from '../src/components/nav.vue'
+	export default {
+		components : {Nav}
+	}
+</script>
+
+<style>
+	@import url(./index.css);
 </style>

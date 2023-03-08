@@ -1,0 +1,44 @@
+/* 去除整体边框 */
+body{ margin: 0rem; }
+
+/* 手形 */
+.cursor{
+cursor: pointer;
+}
+/* 导航栏 */
+.nav{
+	height: 30px;
+	width: 100%;
+	background-color:rgba(200, 200, 200, 0.3) ;
+}
+.nav-a{
+	box-sizing: border-box;
+	padding: 0px 10px;
+	display: flex;
+	margin: 0px auto;
+	width: 1200px;
+	height: 30px;
+	align-items: center;
+}
+.nav-b{
+	height: 0.625rem;
+	color: #999;
+	font-size: 12px;
+	text-decoration: none;
+	line-height: 10px;
+	padding: 0px 10px;
+	border-right: #aaa solid 1px;
+}
+.nav-b:hover{
+	color: #e11;
+}
+.nav-b:nth-child(1){
+	border-right:none;
+	padding: 0px;
+	font-size: 18px;
+	margin-right: auto;
+	color: #e11;
+}
+.nav-active{
+	color: #e11;
+}
