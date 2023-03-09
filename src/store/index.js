@@ -1,12 +1,7 @@
 import { createStore } from 'vuex'
-
+import kind from './module/kind.js'
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+	modules: {
+		kind
+	}
 })

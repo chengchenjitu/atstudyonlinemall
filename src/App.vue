@@ -3,6 +3,10 @@
 	<Nav></Nav>
 	<!-- 搜索栏 -->
 	<Search></Search>
+	
+	
+	<!-- 商品分类 -->
+	<router-view></router-view>
 	<!-- 页脚 -->
 	<Foot></Foot>
 </template>
@@ -17,7 +21,7 @@
 			Nav,
 			Search,
 			Foot
-		}
+		},
 	}
 </script>
 

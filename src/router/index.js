@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import Kind from '../views/kind.vue'
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+	{
+		path : '/',
+		name : 'Kind',
+		component : Kind
+	},
 ]
 
 const router = createRouter({
