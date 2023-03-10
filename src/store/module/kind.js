@@ -3,6 +3,7 @@ import axios from 'axios'
 export default {
 	namespaced : true,
 	state : {
+		aaa : 2
 	},
 	mutations : {
 		

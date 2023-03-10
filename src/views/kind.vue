@@ -10,11 +10,11 @@
 				<div class="img-b"><img src="../assets/carousel05.jpg" alt=""></div>
 			</div>
 			<div class="img-d">
-				<div class="img-c" @click="active(0)" :class="{'img-active' : img == 0}"></div>
-				<div class="img-c" @click="active(1)" :class="{'img-active' : img == 1}"></div>
-				<div class="img-c" @click="active(2)" :class="{'img-active' : img == 2}"></div>
-				<div class="img-c" @click="active(3)" :class="{'img-active' : img == 3}"></div>
-				<div class="img-c" @click="active(4)" :class="{'img-active' : img == 4}"></div>
+				<div class="img-c" @mouseover="active(0)" :class="{'img-active' : img == 0}"></div>
+				<div class="img-c" @mouseover="active(1)" :class="{'img-active' : img == 1}"></div>
+				<div class="img-c" @mouseover="active(2)" :class="{'img-active' : img == 2}"></div>
+				<div class="img-c" @mouseover="active(3)" :class="{'img-active' : img == 3}"></div>
+				<div class="img-c" @mouseover="active(4)" :class="{'img-active' : img == 4}"></div>
 			</div>
 			
 		</div>
@@ -25,7 +25,7 @@
 			<div class="kind-b" 
 				v-for = "a of kinds.data.data"
 				:key = "a.cate_id+a.cate_name"
-				@mouseover="kind_cate = a.children">{{a.cate_name}}</div>
+				@click="kind_cate = a.children">{{a.cate_name}}</div>
 		</div>
 		<div style="width: 10px;" @mouseover="tip = true"
 			@mouseout="tip = false"></div>
@@ -79,7 +79,8 @@
 			...mapState(['kind'])
 		},
 		async mounted(){
-			this.kinds =await this.kind_list()
+			this.kinds = await this.kind_list()
+			this.kind_cate = this.kinds.data.data[0].children
 		}
 	}
 </script>
