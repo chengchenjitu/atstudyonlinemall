@@ -7,6 +7,8 @@
 	
 	<!-- 商品分类 -->
 	<router-view></router-view>
+
+	<Spu></Spu>
 	<!-- 页脚 -->
 	<Foot></Foot>
 </template>
@@ -20,7 +22,7 @@
 		components : {
 			Nav,
 			Search,
-			Foot
+			Foot,
 		},
 	}
 </script>

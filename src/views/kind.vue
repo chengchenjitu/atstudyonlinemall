@@ -25,7 +25,7 @@
 			<div class="kind-b" 
 				v-for = "a of kinds.data.data"
 				:key = "a.cate_id+a.cate_name"
-				@click="kind_cate = a.children">{{a.cate_name}}</div>
+				@click="kind_cate = a.children;">{{a.cate_name}}</div>
 		</div>
 		<div style="width: 10px;" @mouseover="tip = true"
 			@mouseout="tip = false"></div>
@@ -37,9 +37,10 @@
 				:key ="a.cate_id+a.cate_name">
 				<div class="kind-e">{{a.cate_name}}></div>
 				<div class="kind-g" v-if = "a.children != undefined">
-					<div class="kind-f hover"
+					<router-link to="/Category" class="kind-f hover"
 					v-for = "b of a.children"
-					:key ="b.cate_id+b.cate_name">{{b.cate_name}}</div>
+					:key ="b.cate_id+b.cate_name"
+					@click="id(b.cate_id); name_push(b.cate_id);pid(b.cate_parentid)">{{b.cate_name}}</router-link>
 				</div>
 			</div>
 		</div>
@@ -49,21 +50,43 @@
 			<div class="img-f"><img src="../assets/carousel-right03.jpg" alt=""></div>
 		</div>
 	</div>
+	<div class="title-">
+		<div class="title-a">4K超清电视 专场</div>
+	</div>
+	<Spu></Spu>
 </template>
 
 <script>
+
 	import {mapActions,mapState,mapMutations} from 'vuex'
+	import Spu from '../components/spu.vue'
 	export default {
+		components : {
+			Spu
+		},
 		data() {
 			return{
 				kinds : undefined,
 				kind_cate : undefined,
 				tip : false,
 				img : 0,
-				push : undefined
+				push : undefined,
+				cate_id : undefined,
+				list : [],
 			}
 		},
 		methods: {
+			pid(x){
+				this.kind.pid = x
+			},
+			name_push(x){
+				this.list.push(x)
+				this.kind.name_push = this.list
+				this.list = []
+			},
+			id(x){
+				this.kind.cate_id = x
+			},
 			active(x){
 				this.img = x
 				this.push = {'margin-left' : `${-x*790}px`}

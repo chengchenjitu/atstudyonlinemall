@@ -211,6 +211,8 @@ cursor: pointer;
 	display: flex;
 }
 .kind-f{
+	text-decoration: none;
+	color: #666;
 	margin-right: 10px;
 }
 .active{
@@ -260,4 +262,55 @@ cursor: pointer;
 }
 .img-f>img{
 	width: 190px;
+}
+
+/* 首页分类 */
+.title-{
+	display: flex;
+	width: 1200px;
+	margin: 20px auto;
+}
+.title-a{
+	text-align: center;
+	width: 180px;
+	text-align: center;
+	color: #999;
+	box-sizing: border-box;
+	font-size: 18px;
+	border-radius: 5px 23px 23px 5px;
+	box-shadow: #ccc 0px 0px 5px;
+	padding: 10px 0px;
+	font-weight: 700;
+}
+
+/* 分类页面 */
+.cate-{
+	width: 1200px;
+	margin: 20px auto 40px;
+	font-size: 14px;
+	color: #888;
+	padding: 10px 0px 20px 0px;
+	box-shadow: 0px 0px 10px #ddd;
+	border-radius: 5px;
+}
+.cate-a{
+	margin-top: 10px;
+	display: flex;
+}
+.cate-b{
+	text-align: end;
+	width: 145px;
+	margin-right: 20px;
+}
+.cate-d{
+	display: flex;
+}
+.cate-c{
+	margin-right: 20px;
+}
+.cate-e{
+	margin-right: 20px;
+}
+.cate-click{
+	color : #e11;
 }
