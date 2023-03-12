@@ -40,7 +40,9 @@
 					<router-link to="/Category" class="kind-f hover"
 					v-for = "b of a.children"
 					:key ="b.cate_id+b.cate_name"
-					@click="id(b.cate_id); name_push(b.cate_id);pid(b.cate_parentid)">{{b.cate_name}}</router-link>
+					@click="id(b.cate_id); 
+					name_push(b.cate_id);
+					pid(b.cate_parentid)">{{b.cate_name}}</router-link>
 				</div>
 			</div>
 		</div>
@@ -53,17 +55,16 @@
 	<div class="title-">
 		<div class="title-a">4K超清电视 专场</div>
 	</div>
-	<Spu></Spu>
 </template>
 
 <script>
 
 	import {mapActions,mapState,mapMutations} from 'vuex'
-	import Spu from '../components/spu.vue'
+	// import Spu from '../components/spu.vue'
 	export default {
-		components : {
-			Spu
-		},
+		// components : {
+		// 	Spu
+		// },
 		data() {
 			return{
 				kinds : undefined,

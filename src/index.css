@@ -286,7 +286,7 @@ cursor: pointer;
 /* 分类页面 */
 .cate-{
 	width: 1200px;
-	margin: 20px auto 40px;
+	margin: 20px auto 30px;
 	font-size: 14px;
 	color: #888;
 	padding: 10px 0px 20px 0px;
@@ -313,4 +313,56 @@ cursor: pointer;
 }
 .cate-click{
 	color : #e11;
+}
+/* spu组件 */
+.spu-{
+	width: 220px;
+}
+.spu-a>img{
+	width:220px ;
+}
+.spu-b{
+	width: 220px;
+	flex-wrap: wrap;
+	margin-top: 5px;
+	display: flex;
+}
+.spu-c>img{
+	margin-right: 2px;
+	border: #bbb 2px solid;
+	width: 30px;
+}
+.spu-c:nth-child(1)>img{
+	border: #e11 2px solid;
+}
+.spu-d>span{
+	margin-left: 3px;
+}
+.spu-d{
+	margin-top: 5px;
+	font-weight: 700;
+	font-size: 18px;
+	color: #e11;
+}
+.spu-e{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	margin-top: 10px;
+	color: #777;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.spu-f{
+	justify-content: space-between;
+	margin: 0px auto;
+	width: 1200px;
+	flex-wrap: wrap;
+	display: flex;
+}
+.spu-active{
+	border: #e11 2px solid !important;
+}
+.spu-active1{
+	border: #bbb 2px solid !important;
 }

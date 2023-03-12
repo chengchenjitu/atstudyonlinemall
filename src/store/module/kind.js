@@ -4,11 +4,14 @@ export default {
 	namespaced : true,
 	state : {
 		category : [],
-		cate_id : 0,
+		cate_id : '',
 		name_push : [],
 		pid : 0,
 		pid_list : 0,
-		id : [],
+		spu : [],
+		spu1 : [],
+		length : 10,
+		search : '',
 	},
 	mutations : {
 		
@@ -28,9 +31,6 @@ export default {
 				} } )
 			.then(response => {
 				context.state.category = response.data
-				for(let i = 0; i <= context.state.category.data.length; i++){
-					context.state.id.push([])
-				}
 			})
 		},
 		pid(context){
@@ -38,8 +38,23 @@ export default {
 				pid : `${context.state.pid}`,
 				} } )
 			.then(response => {
-				context.state.pid_list = response.data
+				context.state.pid_list = response.data.data
 			})
-		}
+		},
+		spu(context){
+			axios.get( "/api/spu" , { params : {
+				spu_name : `${context.state.search}`,
+				spu_title : '',
+				spu_status : '',
+				cate_id : `${context.state.cate_id}`,
+				valueList : '',
+				start : '0',
+				length : `${context.state.length}`
+				} } )
+			.then(response => {
+				context.state.spu = response.data.data
+				context.state.pid_list = response.data.categoryList
+			})
+		},
 	},
 }

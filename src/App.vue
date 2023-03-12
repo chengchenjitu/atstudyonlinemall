@@ -8,7 +8,7 @@
 	<!-- 商品分类 -->
 	<router-view></router-view>
 
-	<Spu></Spu>
+	<!-- <Spu></Spu> -->
 	<!-- 页脚 -->
 	<Foot></Foot>
 </template>
