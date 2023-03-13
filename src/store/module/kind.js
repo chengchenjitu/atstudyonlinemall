@@ -3,15 +3,16 @@ import axios from 'axios'
 export default {
 	namespaced : true,
 	state : {
+		number : 0,
 		category : [],
 		cate_id : '',
 		name_push : [],
 		pid : 0,
-		pid_list : 0,
 		spu : [],
-		spu1 : [],
 		length : 10,
 		search : '',
+		pid_list : '',
+		lista : '',
 	},
 	mutations : {
 		
@@ -47,7 +48,7 @@ export default {
 				spu_title : '',
 				spu_status : '',
 				cate_id : `${context.state.cate_id}`,
-				valueList : '',
+				valueList : `${context.state.lista}`,
 				start : '0',
 				length : `${context.state.length}`
 				} } )

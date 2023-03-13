@@ -25,7 +25,7 @@
 			<div class="kind-b" 
 				v-for = "a of kinds.data.data"
 				:key = "a.cate_id+a.cate_name"
-				@click="kind_cate = a.children;">{{a.cate_name}}</div>
+				@mouseover="kind_cate = a.children;">{{a.cate_name}}</div>
 		</div>
 		<div style="width: 10px;" @mouseover="tip = true"
 			@mouseout="tip = false"></div>
@@ -42,7 +42,8 @@
 					:key ="b.cate_id+b.cate_name"
 					@click="id(b.cate_id); 
 					name_push(b.cate_id);
-					pid(b.cate_parentid)">{{b.cate_name}}</router-link>
+					pid(b.cate_parentid)
+					this.kind.number=0">{{b.cate_name}}</router-link>
 				</div>
 			</div>
 		</div>
@@ -86,6 +87,7 @@
 				this.list = []
 			},
 			id(x){
+				this.kind.search = ''
 				this.kind.cate_id = x
 			},
 			active(x){

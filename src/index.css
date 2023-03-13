@@ -317,7 +317,8 @@ cursor: pointer;
 /* spu组件 */
 .spu-{
 	width: 220px;
-}
+	margin: 0px 10px;
+} 
 .spu-a>img{
 	width:220px ;
 }
@@ -354,7 +355,6 @@ cursor: pointer;
 	margin-bottom: 10px;
 }
 .spu-f{
-	justify-content: space-between;
 	margin: 0px auto;
 	width: 1200px;
 	flex-wrap: wrap;

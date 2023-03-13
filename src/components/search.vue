@@ -5,8 +5,10 @@
 			<div class="search-c">
 				<div class="search-d"><input type="text" 
 					placeholder="商品名称、品牌、规格属性......"
-					v-model = 'search'></div>
-				<router-link to="/Category" class="search-i"  ><button @click="aaa()" class="cursor">搜索</button></router-link>
+					v-model = 'kind.search'></div>
+				<router-link to="/Category" class="search-i"  >
+					<button @click="aaa()" class="cursor">搜索</button>
+				</router-link>
 				<div class="search-j"><button>我的购物车</button></div>
 			</div>
 			<div class="search-e">
@@ -37,7 +39,6 @@
 		</div>
 	</div>
 </template>
-
 <script>
 	import {mapState,mapActions} from 'vuex'
 	export default {
@@ -45,20 +46,18 @@
 			return{
 				search1 : 0,
 				search2 : 0,
-				search : undefined,
-				index3 : undefined
 			}
 		},
 		methods : {
 			aaa(){
-				this.kind.search = this.search
+				this.kind.lista = []
+				this.kind.cate_id = ''
 				this.spu()
-				// console.log(this.kind.pid_list)
-				console.log(this.kind.pid_list)
-				this.kind.pid_list = this.kind.spu1
+				this.kind.number = undefined
+				this.kind.category = []
 			},
 			...mapActions({
-				spu : 'kind/spu'
+				spu : 'kind/spu',
 			})
 		},
 		computed : {
