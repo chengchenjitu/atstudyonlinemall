@@ -29,22 +29,25 @@
 		</div>
 		<div style="width: 10px;" @mouseover="tip = true"
 			@mouseout="tip = false"></div>
-		<div class="kind-c cursor" v-show = "tip" 
+		<div class="kind-c cursor" v-show = "tip"
 			@mouseover="tip = true"
 			@mouseout="tip = false">
-			<div class="kind-d"
-				v-for = "a of kind_cate"
-				:key ="a.cate_id+a.cate_name">
-				<div class="kind-e">{{a.cate_name}}></div>
-				<div class="kind-g" v-if = "a.children != undefined">
-					<router-link to="/Category" class="kind-f hover"
-					v-for = "b of a.children"
-					:key ="b.cate_id+b.cate_name"
-					@click="id(b.cate_id);
-					name_push(b.cate_id);
-					this.kind.number = 0">{{b.cate_name}}</router-link>
+			<template v-if = "kinds !=undefined">
+				<div class="kind-d"
+					v-for = "a of kind_cate"
+					:key ="a.cate_id+a.cate_name">
+					<div class="kind-e">{{a.cate_name}}></div>
+					<div class="kind-g" v-if = "a.children != undefined">
+						<router-link to="/Category" class="kind-f hover"
+						v-for = "b of a.children"
+						:key ="b.cate_id+b.cate_name"
+						@click="id(b.cate_id);
+						name_push(b.cate_id);
+						this.kind.number = 0">{{b.cate_name}}</router-link>
+					</div>
 				</div>
-			</div>
+			</template>
+			
 		</div>
 		<div class="img-e">
 			<div class="img-f"><img src="../assets/carousel-right01.jpg" alt=""></div>

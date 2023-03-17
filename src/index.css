@@ -40,7 +40,6 @@ cursor: pointer;
 	padding: 0px;
 	font-size: 18px;
 	margin-right: auto;
-	color: #e11;
 }
 .nav-active{
 	color: #e11;
@@ -507,4 +506,45 @@ cursor: pointer;
 }
 .context-active{
 	border: 1px #e11 solid;
+}
+
+/* 登录注册界面样式 */
+.login{
+	display: flex;
+	margin: 20px auto 0px;
+	width: 1200px;
+}
+.login-img>img{
+	border-radius: 5px;
+}
+.login1{
+	width: 600px;
+	margin-left: 80px;
+}
+.login0{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 18px;
+	color: #999;
+	font-weight: 700;
+}
+.login2>input{
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	outline: none;
+	border-radius: 10px;
+	box-sizing: border-box;
+	padding: 9px 20px;
+	width: 600px;
+}
+.login3{
+	font-size: 14px;
+	border-radius: 10px;
+	color: #fff;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 9px 0px;
+	margin-top: 10px;
+	background-color: #e33;
 }
