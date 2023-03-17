@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Kind from '../views/kind.vue'
 import Category from '../views/category.vue'
+import Detail from '../views/detail.vue'
 const routes = [
 	{
 		path : '/',
@@ -12,11 +13,11 @@ const routes = [
 		name : 'Category',
 		component : Category
 	},
-	// {
-	// 	path : '/',
-	// 	name : '',
-	// 	component : 
-	// },
+	{
+		path : '/Detail',
+		name : 'Detail',
+		component : Detail
+	},
 	// {
 	// 	path : '/',
 	// 	name : '',

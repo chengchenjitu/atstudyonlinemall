@@ -7,7 +7,7 @@
 					placeholder="商品名称、品牌、规格属性......"
 					v-model = 'kind.search'></div>
 				<router-link to="/Category" class="search-i"  >
-					<button @click="aaa()" class="cursor">搜索</button>
+					<button @click="aaa(); kind.tips = true;kind.tap = false;this.kind.break=true" class="cursor">搜索</button>
 				</router-link>
 				<div class="search-j"><button>我的购物车</button></div>
 			</div>
@@ -55,6 +55,7 @@
 				this.spu()
 				this.kind.number = undefined
 				this.kind.category = []
+				this.kind.length = 10
 			},
 			...mapActions({
 				spu : 'kind/spu',

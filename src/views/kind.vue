@@ -40,10 +40,9 @@
 					<router-link to="/Category" class="kind-f hover"
 					v-for = "b of a.children"
 					:key ="b.cate_id+b.cate_name"
-					@click="id(b.cate_id); 
+					@click="id(b.cate_id);
 					name_push(b.cate_id);
-					pid(b.cate_parentid)
-					this.kind.number=0">{{b.cate_name}}</router-link>
+					this.kind.number = 0">{{b.cate_name}}</router-link>
 				</div>
 			</div>
 		</div>
@@ -56,16 +55,37 @@
 	<div class="title-">
 		<div class="title-a">4K超清电视 专场</div>
 	</div>
+	<div class="spu-f">
+		<Spu :data = "kind.spu1[0]"></Spu>
+	</div>
+	<div class="title-">
+		<div class="title-a">手机 专场</div>
+	</div>
+	<div class="spu-f">
+		<Spu :data = "kind.spu1[1]"></Spu>
+	</div>
+	<div class="title-">
+		<div class="title-a">笔记本 专场</div>
+	</div>
+	<div class="spu-f">
+		<Spu :data = "kind.spu1[2]"></Spu>
+	</div>
+	<div class="title-">
+		<div class="title-a">变频空调 专场</div>
+	</div>
+	<div class="spu-f">
+		<Spu :data = "kind.spu1[3]"></Spu>
+	</div>
 </template>
 
 <script>
 
 	import {mapActions,mapState,mapMutations} from 'vuex'
-	// import Spu from '../components/spu.vue'
+	import Spu from '../components/spu.vue'
 	export default {
-		// components : {
-		// 	Spu
-		// },
+		components : {
+			Spu
+		},
 		data() {
 			return{
 				kinds : undefined,
@@ -78,24 +98,24 @@
 			}
 		},
 		methods: {
-			pid(x){
-				this.kind.pid = x
-			},
 			name_push(x){
 				this.list.push(x)
 				this.kind.name_push = this.list
 				this.list = []
 			},
 			id(x){
+				this.kind.tips = false
 				this.kind.search = ''
 				this.kind.cate_id = x
+				this.kind.length = 10
 			},
 			active(x){
 				this.img = x
 				this.push = {'margin-left' : `${-x*790}px`}
 			},
 			...mapActions({
-				kind_list : "kind/kind_list"
+				kind_list : "kind/kind_list",
+				spu1 : "kind/spu1"
 			}),
 			...mapMutations({
 				
@@ -105,8 +125,16 @@
 			...mapState(['kind'])
 		},
 		async mounted(){
+			this.kind_cate = JSON.parse(localStorage.getItem('bbb'))
 			this.kinds = await this.kind_list()
 			this.kind_cate = this.kinds.data.data[0].children
+			this.spu1()
+			this.kind.lista = ''
+			// localStorage.setItem('bbb',JSON.stringify(this.kind_cate))
+			// this.kind_cate = JSON.parse(localStorage.getItem('bbb'))
+		},
+		beforeUnmount() {
+			sessionStorage.setItem('aaa',JSON.stringify(this.kind.cate_id))
 		}
 	}
 </script>

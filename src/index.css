@@ -366,3 +366,145 @@ cursor: pointer;
 .spu-active1{
 	border: #bbb 2px solid !important;
 }
+
+/* 商品详情样式 */
+.detail-{
+	width: 1200px;
+	margin: 60px auto 10px;
+	display: flex;
+}
+.detail-a{
+	text-align: center;
+}
+.detail-b>img{
+	width: 400px;
+	margin-bottom: 10px;
+}
+.detail-d{
+	color: #ccc;
+	font-weight: 700;
+	font-size: 32px;
+}
+.detail-c{
+	display: flex;
+	align-items: center;
+}
+.detail-e{
+	overflow: hidden;
+	width: 440px;
+	display: flex;
+}
+.detail-g{
+	overflow: hidden;
+	display: flex;
+}
+.detail-f>img{
+	box-sizing: border-box;
+	margin: 0px 5px;
+	width: 100px;
+}
+.detail-active{
+	border: 3px #e11 solid;
+}
+
+/* 商品详情内容样式 */
+.context-{
+		
+	margin-left: 20px;
+}
+.context-a{
+	color: #555;
+	font-weight: 700;
+	font-size: 18px;
+}
+.context-b{
+	margin-top: 15px;
+	margin-bottom: 25px;
+	display: flex;
+	align-items: flex-end;
+	height: 30px;
+}
+.context-c{
+	font-size: 18px;
+	font-weight:700;
+	color: #e11;
+}
+.context-d{
+	line-height: 30px;
+	margin-left: 5px;
+	color: #e11;
+	font-size: 30px;
+	font-weight:700;
+}
+.context-e{
+	margin-left: 20px;
+	color: #999;
+	font-size: 14px;
+	font-weight:700;
+}
+.context-f{
+	text-decoration: line-through;
+	color: #999;
+	font-size: 18px;
+	font-weight:700;
+}
+.context-g{
+	width: 100px;
+	color: #999;
+	font-weight:700;
+}
+.context-h{
+	margin-right: 75px;
+	margin-top: 5px;
+	align-items: flex-start;
+	display: flex;
+}
+.context-k>img{
+	border-radius: 5px 0px 0px 5px;
+	width: 30px;
+}
+.context-j{
+	font-weight: 700;
+	color:#999 ;
+	font-size: 14px;
+	line-height: 30px;
+	border-radius: 5px;
+	border: #ccc solid 1px;
+	height: 30px;
+	display: flex;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.context-l{
+	margin-right: 10px;
+}
+.context-n{
+	width: 550px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.context-i{
+	width: 550px;
+	flex-wrap: wrap;
+	display: flex;
+}
+.context-t{
+	display: flex;
+	margin-top: 30px;
+}
+.context-u1>input{
+	width: 65px;
+	padding: 5px 10px;
+	border: 1px #e11 solid;
+	margin-right: 20px;
+}
+.context-u>button{
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	margin-right: 20px;
+	background-color: #e11;
+}
+.context-active{
+	border: 1px #e11 solid;
+}
