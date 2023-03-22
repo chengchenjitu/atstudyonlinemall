@@ -8,11 +8,11 @@
 					v-model="customer.user_phone">
 			</div>
 			<div class="login2">
-				<input type="text" placeholder="请输入登录密码"
+				<input type="password" placeholder="请输入登录密码"
 					v-model="customer.user_password">
 			</div>
 			<div class="login2">
-				<input type="text" placeholder="请在此确认密码">
+				<input type="password" placeholder="请在此确认密码">
 			</div>
 			<div class="login2">
 				<input type="text" placeholder="请输入客户昵称"
@@ -34,6 +34,7 @@
 			//注册时发送请求
 			regists() {
 				this.regist()
+				this.customer.nav = 0
 			}
 		},
 		mounted() {

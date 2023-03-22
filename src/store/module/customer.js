@@ -26,15 +26,17 @@ request.interceptors.response.use(response => {
 })
 export default {
 	namespaced: true,
-	state: {
+	state : {
+		nav : -1,			//导航栏索引
 		username: undefined, //手机号码
 		password: undefined, //密码
 		user_phone: undefined, //注册手机号
 		user_password: undefined, //注册密码
 		user_name: undefined, //注册昵称
 		token: undefined, //存放请求头
+		name: '你好，请登录', //存放用户名
 	},
-	actions: {
+	actions : {
 		//发送登录请求
 		login(context){
 			request({
@@ -44,17 +46,26 @@ export default {
 					username : `${context.state.username}`,
 					password : `${context.state.password}`
 				})
-			}).then(responsed => {
-				if(responsed.data.httpcode == 200){
+			}).then(response => {
+				if(response.data.httpcode == 200){
 					router.push({path : '/'})
-					localStorage.setItem('token',responsed.data.data)
-					context.state.token = responsed.data.data
+					localStorage.setItem('token',response.data.data)
+					context.state.token = response.data.data
+					request({
+						url : '/api/customer/user',
+						method : 'get',
+					}).then(response => {
+						context.state.name = response.data.data.user_name
+						localStorage.setItem('name',response.data.data.user_name)
+						
+					})
 				}
 			})
+			
 		},
 		regist(context) {
-			axios.create()({
-				url: '/api/login',
+			request({
+				url: '/api/regist',
 				method: 'POST',
 				data: qs.stringify({
 					user_phone: `${context.state.user_phone}`,
@@ -62,7 +73,11 @@ export default {
 					user_name: `${context.state.user_name}`
 				})
 			}).then(response => {
-				console.log(response)
+				if(response.data.httpcode == 200){
+					router.push({path : '/login'})
+					localStorage.setItem('token',response.data.data)
+					context.state.token = response.data.data
+				}
 			})
 		},
 	},

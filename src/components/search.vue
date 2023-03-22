@@ -9,7 +9,7 @@
 				<router-link to="/Category" class="search-i"  >
 					<button @click="aaa(); kind.tips = true;kind.tap = false;this.kind.break=true" class="cursor">搜索</button>
 				</router-link>
-				<div class="search-j"><button>我的购物车</button></div>
+				<router-link to="/car" class="search-j"><button class="cursor">我的购物车</button></router-link>
 			</div>
 			<div class="search-e">
 				<div @click="search1 = 0" :class="{'search-active' : search1 == 0}" class="search-f">春日环游记</div>
@@ -22,7 +22,7 @@
 				<div @click="search1 = 7" :class="{'search-active' : search1 == 7}"  class="search-f">春茶</div>
 				<div @click="search1 = 8" :class="{'search-active' : search1 == 8}"  class="search-f">正平农贸</div>
 				<div @click="search1 = 9" :class="{'search-active' : search1 == 9}"  class="search-f">嗨9购了</div>
-				<div @click="search1 = 10" :class="{'search-active' : search1 == 10}"  class="search-f">鱼人节好物</div>
+				<div @click="search1 =10" :class="{'search-active' : search1 ==10}"  class="search-f">鱼人节好物</div>
 			</div>
 			<div class="search-g">
 				<div @click="search2 = 0" :class="{'search-active' : search2 == 0}" class="search-h">秒杀</div>

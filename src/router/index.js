@@ -4,6 +4,9 @@ import Category from '../views/category.vue'
 import Detail from '../views/detail.vue'
 import Login from '../views/login.vue'
 import Regist from '../views/regist.vue'
+import Address from '../views/address.vue'
+import Car from '../views/car.vue'
+import Order from '../views/order.vue'
 const routes = [
 	{
 		path : '/',
@@ -30,12 +33,21 @@ const routes = [
 		name : 'Regist',
 		component : Regist
 	},
-	// {
-	// 	path : '/',
-	// 	name : '',
-	// 	component : 
-	// },
-
+	{
+		path : '/Address',
+		name : 'Address',
+		component : Address
+	},
+	{
+		path : '/Car',
+		name : 'Car',
+		component : Car
+	},
+	{
+		path : '/Order',
+		name : 'Order',
+		component : Order
+	},
 ]
 
 const router = createRouter({

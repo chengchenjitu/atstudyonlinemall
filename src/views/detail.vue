@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="context-">
-			<div  class="context-a">{{kind.spu_detail.spu_name}}</div>
+			<div class="context-a">{{kind.spu_name}}</div>
 			<div class="context-b">
 				<div class="context-c">现价：</div>
 				<div class="context-d">¥{{kind.price}}</div>
@@ -61,9 +61,10 @@
 				</div>
 			</div>
 			<div class="context-t">
-				<div class="context-u1"><input value="1"></div>
-				<div class="context-u cursor"><button>加入购物车</button></div>
-				<div class="context-u cursor"><button>立即购买</button></div>
+				<div class="context-u1"><input v-model="cart.cart_count"></div>
+				<div class="context-u "><button class="cursor"
+					@click="spu()">加入购物车</button></div>
+				<div class="context-u "><button class="cursor">立即购买</button></div>
 			</div>
 		</div>
 		
@@ -83,6 +84,16 @@
 			}
 		},
 		methods: {
+			//获得商品信息便于并发送请求加入购物车
+			spu(){
+				this.price()
+				this.cart.cart_spuid=this.kind.spu_id
+				this.cart.cart_name=this.kind.spu_name
+				this.cart.cart_thumburl=this.kind.spu_img.value_images[0]
+				this.cart.cart_price=this.kind.price
+				//调用加入购物车请求
+				this.sku()
+			},
 			//图片左右移动方法
 			img_right() {
 				if(this.kind.lenghts-this.index-4 > 0){
@@ -122,19 +133,25 @@
 						//确定符合条件后改变价格
 						this.kind.price = a.sku_price
 						this.kind.originalprice = a.sku_originalprice
+						this.kind.spu_name = a.sku_name
+						//获取加入购物车所需的数据
+						this.cart.cart_skuid = a.sku_id
+						this.cart.cart_sku=a.sku_spuattr
 					}
 				}
 			},
 			...mapActions({
-				detail : 'kind/detail'
+				detail : 'kind/detail',
+				sku : 'cart/sku'
 			})
 		},
 		mounted() {
 			//页面刷新从新发送请求
-			this.detail(JSON.parse(localStorage.getItem('bbb')))
+			this.kind.spu_id=JSON.parse(localStorage.getItem('bbb'))
+			this.detail()
 		},
 		computed: {
-			...mapState(['kind'])
+			...mapState(['kind','cart'])
 		}
 	}
 </script>

@@ -23,6 +23,7 @@ export default {
 		spu_id : undefined,		//商品详情id
 		spu_detail : undefined,	//商品详情数据
 		spu_img : undefined,	//展示图片
+		spu_name : undefined,	//商品名称
 		active : undefined,		//激活商品图片地址
 		lengths : 0,			//缩略图张数
 		price : 0,				//商品价格
@@ -38,9 +39,11 @@ export default {
 	actions : {
 		// 单个商品详情
 		//获取单个商品详情请求
-		detail(context,payload){
-			axios.get( `/api/spu/${payload}`)
+		detail(context){
+			axios.get( `/api/spu/${context.state.spu_id}`)
 			.then(response => {
+				//初始名称
+				context.state.spu_name=response.data.data.skuList[0].sku_name
 				//展示图片
 				context.state.spu_img=response.data.data.attrKeyList[0].attrValueList[0]
 				//商品详细数据
