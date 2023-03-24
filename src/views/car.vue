@@ -39,7 +39,10 @@
 			<div class="cart-z">清空购物车</div>
 			<div class="cart-o">总价：</div>
 			<div class="cart-p">¥ {{cart.price}}</div>
-			<div class="cart-q"><button>去结算</button></div>
+			<router-link to="/Pay" class="cart-q">
+				<button class="cursor"
+					@click="get()">去结算</button>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -53,6 +56,10 @@
 			}
 		},
 		methods : {
+			//添加订单的方法
+			get(){
+				this.orderGet()
+			},
 			...mapMutations({
 				all_price : 'cart/all_price',
 				check : 'cart/check'
@@ -61,7 +68,10 @@
 				skuGet : 'cart/skuGet',
 				del : 'cart/del',
 				revise_cart : 'cart/revise_cart',
-				del_all : 'cart/del_all'
+				del_all : 'cart/del_all',
+				orderGet : 'cart/orderGet',
+				skuCheck : 'cart/skuCheck',
+				useraddress : 'cart/useraddress'
 			}),
 			//发送请求变更选中状态
 			revise(x,y,z,o){
@@ -102,6 +112,8 @@
 		},
 		mounted() {
 			this.skuGet()
+			this.skuCheck()
+			this.useraddress()
 		},
 		computed : {
 			...mapState(['cart'])

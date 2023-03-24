@@ -38,8 +38,84 @@ export default {
 		list : [],					//存放版本及颜色
 		price : 0,					//存总价
 		mark : false,				//判断全部按钮是否选中
+		
+		//订单列表所需变量
+		order_spuamount : undefined,		//商品总金额
+		order_expressfee : undefined,		//配送费
+		order_totalamount : undefined,		//订单总金额
+		order_discountamount : undefined,	//折扣金额
+		order_payamount : undefined,		//实际付款金额
+		orderAddress : {},					//地址信息
+		orderDetailList : [],				//商品信息
 	},
 	actions : {
+		//添加订单
+		orderGet(context){
+			context.state.order_spuamount = context.state.price
+			context.state.order_expressfee = 0
+			context.state.order_totalamount = context.state.price
+			context.state.order_discountamount = 0
+			context.state.order_payamount = context.state.price
+			request({
+				url: '/api/customer/order',
+				method: 'POST',
+				data: qs.stringify({
+					order_spuamount: `${context.state.cart_name}`,
+					order_expressfee: `${context.state.cart_name}`,
+					order_totalamount: `${context.state.cart_name}`,
+					order_discountamount: `${context.state.cart_name}`,
+					order_payamount: `${context.state.cart_name}`,
+					//orderAddress: `${context.state.cart_skuid}`,
+					//orderDetailList: `${context.state.cart_sku}`,
+				})
+			}).then(response=>{
+				console.log(response)
+			})
+		},
+		//获取购物车列表，并筛选出勾选的商品
+		skuCheck(context) {
+			request({
+				url: '/api/customer/cart',
+				method: 'GET',
+			}).then(response => {
+				//let i = 0
+				for(let a of response.data.data){
+					if(a.cart_checked == 1){
+						context.state.orderDetailList[0] = {}
+						context.state.orderDetailList[0].odtails_name=a.cart_name
+						context.state.orderDetailList[0].odtails_thumburl=a.cart_thumburl
+						context.state.orderDetailList[0].odtails_price=a.cart_price
+						context.state.orderDetailList[0].odtails_count=a.cart_count
+						context.state.orderDetailList[0].odtails_amount=a.cart_count*a.cart_price+0.00
+						context.state.orderDetailList[0].odtails_scorestatus=0
+						context.state.orderDetailList[0].odtails_spu_id=a.cart_spuid
+						context.state.orderDetailList[0].odtails_sku=a.cart_sku
+						//i++
+					}
+				}
+				console.log(context.state.orderDetailList)
+			})
+		},
+		//获取地址及默认地址
+		useraddress(context){
+			request({
+				url : '/api/customer/useraddress',
+				method : 'GET',
+			}).then(response => {
+				for(let a of response.data.data){
+					if(a.uaddr_isdefault == 0){
+						context.state.orderAddress.consignee = a.uaddr_name
+						context.state.orderAddress.phone = a.uaddr_phone
+						context.state.orderAddress.province = a.uaddr_province
+						context.state.orderAddress.city = a.uaddr_district
+						context.state.orderAddress.district = a.uaddr_city
+						context.state.orderAddress.address = a.uaddr_address
+					}
+				}
+			})
+		},
+		
+		
 		//发送增加购物车请求
 		sku(context) {
 			request({
@@ -103,6 +179,8 @@ export default {
 					context.state.sku=[]
 					//调用计算总价的方法
 					this.commit('cart/all_price')
+					//调用判断是否全选方法
+					this.commit('cart/check')
 				}
 			})
 		},
