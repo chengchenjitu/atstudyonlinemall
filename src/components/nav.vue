@@ -2,8 +2,11 @@
 	<div class="nav">
 		<div class="nav-a" >
 			<router-link @click="nav(-1)" class="nav-b" :class="{'nav-active' : customer.nav ==-1}" to="/">学掌门商城</router-link>
-			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login">
+			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="localStorage.getItem('token') != undefined">
 				{{customer.name}}
+			</router-link>
+			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="localStorage.getItem('token') == undefined">
+				你好，请登录
 			</router-link>
 			<router-link @click="nav(1)"  class="nav-b" :class="{'nav-active' : customer.nav == 1}" to="/Regist">免费注册</router-link>
 			<router-link @click="nav(2)"  class="nav-b" :class="{'nav-active' : customer.nav == 2}" to="/Order">我的订单</router-link>
@@ -24,6 +27,7 @@
 			}
 		},
 		mounted() {
+			
 			this.customer.name = localStorage.getItem("name")
 		},
 		computed : {
