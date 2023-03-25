@@ -2,10 +2,10 @@
 	<div class="nav">
 		<div class="nav-a" >
 			<router-link @click="nav(-1)" class="nav-b" :class="{'nav-active' : customer.nav ==-1}" to="/">学掌门商城</router-link>
-			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="localStorage.getItem('token') != undefined">
+			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="mark != undefined">
 				{{customer.name}}
 			</router-link>
-			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="localStorage.getItem('token') == undefined">
+			<router-link @click="nav(0)"  class="nav-b" :class="{'nav-active' : customer.nav == 0}" to="/Login" v-if="mark == undefined">
 				你好，请登录
 			</router-link>
 			<router-link @click="nav(1)"  class="nav-b" :class="{'nav-active' : customer.nav == 1}" to="/Regist">免费注册</router-link>
@@ -21,6 +21,11 @@
 <script>
 	import {mapState} from 'vuex'
 	export default {
+		data() {
+			return{
+				mark : undefined
+			}
+		},
 		methods : {
 			nav(x){
 				this.customer.nav = x
@@ -29,6 +34,7 @@
 		mounted() {
 			
 			this.customer.name = localStorage.getItem("name")
+			this.mark = localStorage.getItem("name")
 		},
 		computed : {
 			...mapState(['customer'])
@@ -37,11 +43,4 @@
 </script>
 
 <style>
-	/*  login
-		regist
-		order
-		vip
-		get
-		address
-		phone*/
 </style>
