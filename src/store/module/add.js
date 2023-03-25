@@ -149,6 +149,7 @@ export default {
 			to.uaddr_isdefault = context.uaddr_isdefault
 			to.uaddr_id=-2
 			context.add[payload] = to
+			context.uaddr_isdefault = 1
 		}
 	},
 }
