@@ -28,10 +28,15 @@
 						<div class="add-c">{{a.uaddr_phone}}</div>
 					</div>
 					<div class="add-f">
-						<div class="add-g cursor" style="margin-bottom: 10px;"
+						<div class="add-g cursor add-p" 
 							@click='display1(a.uaddr_id,b)'>编辑</div>
-						<div class="add-g cursor"
+						
+						<div class="add-g cursor" :class="{'add-p' : cart.index}"
 							@click="defaul(a.uaddr_id,b)">设为默认</div>
+						<router-link to="/Pay" class="add-g cursor" v-if = 'cart.index'
+							style="text-decoration: none;"
+							@click="getAddress(b)"
+							>选择该地址</router-link>
 					</div>
 				</div>
 			</template>
@@ -131,56 +136,37 @@
 	export default {
 		data() {
 			return {
-				mark : true,		//定义标记确保只能打开一个修改页面
+				mark : 0,		//定义标记确保只能打开一个修改页面
 			}
 		},
 		computed : {
-			...mapState(['add'])
+			...mapState(['add','cart'])
+		},
+		unmounted() {
+			this.cart.index = false
 		},
 		methods : {
+			//调用方法发送订单地址
+			getAddress(x){
+				localStorage.setItem('num',x)
+				this.address(x)
+			},
 			//设为默认
 			defaul(x,y){
-				this.add.uaddr_name = this.add.add[y].uaddr_name
-				this.add.uaddr_phone = this.add.add[y].uaddr_phone
-				for(let a of this.add.address){
-					for(let b of a.children){
-						if(b.children.length>0){
-							this.add.mark3 = true
-							for(let c of b.children){
-								if(c.name == this.add.add[y].uaddr_district){
-									this.add.district=c
-									break
-								}
-							}
-						}
-						if(b.name == this.add.add[y].uaddr_city){
-							this.add.city=b
-							if(b.children.length==0){
-								this.add.mark3 = false
-							}
-							break
-						}
-					}
-					if(a.name == this.add.add[y].uaddr_province){
-						this.add.province=a
-						break
-					}
-				}
-				this.add.uaddr_address = this.add.add[y].uaddr_address
+				//this.recover(y)
+				//判断是否设置默认
+				this.mark = 0
 				for(let a of this.add.add){
 					if(a.uaddr_isdefault == 0){
-						this.mark = false
-						break
-					}else{
-						this.mark = true
+						this.recover(this.mark)
+						this.add.uaddr_isdefault = 1
+						this.add_revise(a.uaddr_id)
+						this.resve(this.mark)
 					}
+					this.mark++
 				}
-				
-				if(this.mark){
-					this.add.uaddr_isdefault = 0
-				}else{
-					this.add.uaddr_isdefault = 1
-				}
+				this.recover(y)
+				this.add.uaddr_isdefault = 0
 				this.add_revise(x)
 				this.resve(y)
 			},
@@ -200,36 +186,8 @@
 			display1(x,y){
 				//显示修改界面
 				this.add.uaddr_id[y]=this.add.add[y].uaddr_id
-				//复原既有信息
-				this.add.uaddr_name=this.add.add[y].uaddr_name
-				this.add.uaddr_phone=this.add.add[y].uaddr_phone
-				for(let a of this.add.address){
-					for(let b of a.children){
-						if(b.children.length>0){
-							this.add.mark3 = true
-							for(let c of b.children){
-								if(c.name == this.add.add[y].uaddr_district){
-									this.add.district=c
-									break
-								}
-							}
-						}
-						if(b.name == this.add.add[y].uaddr_city){
-							this.add.city=b
-							if(b.children.length==0){
-								this.add.mark3 = false
-							}
-							break
-						}
-					}
-					
-					if(a.name == this.add.add[y].uaddr_province){
-						this.add.province=a
-						break
-					}
-				}
-				this.add.uaddr_address=this.add.add[y].uaddr_address
-				this.add.uaddr_isdefault=this.add.add[y].uaddr_isdefault
+				//复原既有信息的方法
+				this.recover(y)
 			},
 			display3(y){
 				this.add.uaddr_id[y] = undefined
@@ -262,7 +220,8 @@
 				add_to : 'add/add_to',
 				useraddress : 'add/useraddress',
 				deleted : 'add/deleted',
-				add_revise : 'add/add_revise'
+				add_revise : 'add/add_revise',
+				address	: 'cart/useraddress'
 				
 			}),
 			//定义方法重新选择地区后清空选项
@@ -285,8 +244,40 @@
 			change_district(){
 				
 			},
+			//复原数据的方法
+			recover(y){
+				this.add.uaddr_name=this.add.add[y].uaddr_name
+				this.add.uaddr_phone=this.add.add[y].uaddr_phone
+				for(let a of this.add.address){
+					for(let b of a.children){
+						if(b.children.length>0){
+							this.add.mark3 = true
+							for(let c of b.children){
+								if(c.name == this.add.add[y].uaddr_district){
+									this.add.district=c
+									break
+								}
+							}
+						}
+						if(b.name == this.add.add[y].uaddr_city){
+							this.add.city=b
+							if(b.children.length==0){
+								this.add.mark3 = false
+							}
+							break
+						}
+					}
+					
+					if(a.name == this.add.add[y].uaddr_province){
+						this.add.province=a
+						break
+					}
+				}
+				this.add.uaddr_address=this.add.add[y].uaddr_address
+				this.add.uaddr_isdefault=this.add.add[y].uaddr_isdefault
+			}
 		},
-		mounted() {
+		mounted(){
 			this.location()
 			this.useraddress()
 		}

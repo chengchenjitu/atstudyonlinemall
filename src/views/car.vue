@@ -23,7 +23,7 @@
 			<div class="cart-k">¥ {{a.cart_price}}</div>
 			<div class="cart-l">
 				<input type="text" v-model="a.cart_count"
-					@change="count(a.car_id,a.cart_count,a.cart_checked,b)">
+					@keyup="count(a.car_id,a.cart_count,a.cart_checked,b)">
 			</div>
 			<div class="cart-t">¥ {{a.cart_count*a.cart_price}}</div>
 			<div class="cart-s cursor" 
@@ -32,14 +32,13 @@
 					index : b})">删除</div>
 		</div>
 		<div class="cart-m">
-			<div class="cart-n">
-				<input type="checkbox" class="cursor"
-					@click="remove()">
-			</div>
-			<div class="cart-z">清空购物车</div>
+			<div class="cart-z cursor" @click="remove()">清空购物车</div>
 			<div class="cart-o">总价：</div>
 			<div class="cart-p">¥ {{cart.price}}</div>
-			<div class="cart-q"><button>去结算</button></div>
+			<router-link to="/Pay" class="cart-q">
+				<button class="cursor"
+					@click="get()">去结算</button>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -53,6 +52,11 @@
 			}
 		},
 		methods : {
+			//添加订单的方法
+			get(){
+				//获取默认地址
+				this.useraddress(localStorage.getItem('num'))
+			},
 			...mapMutations({
 				all_price : 'cart/all_price',
 				check : 'cart/check'
@@ -61,7 +65,10 @@
 				skuGet : 'cart/skuGet',
 				del : 'cart/del',
 				revise_cart : 'cart/revise_cart',
-				del_all : 'cart/del_all'
+				del_all : 'cart/del_all',
+				orderGet : 'cart/orderGet',
+				skuCheck : 'cart/skuCheck',
+				useraddress : 'cart/useraddress'
 			}),
 			//发送请求变更选中状态
 			revise(x,y,z,o){

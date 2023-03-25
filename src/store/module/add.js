@@ -19,7 +19,7 @@ request.interceptors.request.use(config => {
 //响应拦截器
 request.interceptors.response.use(response => {
 	switch (response.data.httpcode) {
-		case 401 : console.log('请先登录');break;
+		case 401 : alert('请先登录');break;
 		default : return response
 	}
 })

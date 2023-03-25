@@ -7,6 +7,7 @@ import Regist from '../views/regist.vue'
 import Address from '../views/address.vue'
 import Car from '../views/car.vue'
 import Order from '../views/order.vue'
+import Pay from '../views/pay.vue'
 const routes = [
 	{
 		path : '/',
@@ -47,6 +48,11 @@ const routes = [
 		path : '/Order',
 		name : 'Order',
 		component : Order
+	},
+	{
+		path : '/Pay',
+		name : 'Pay',
+		component : Pay
 	},
 ]
 
