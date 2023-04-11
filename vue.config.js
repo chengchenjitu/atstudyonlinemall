@@ -6,7 +6,8 @@ module.exports = {
 			// 代理路径  http://127.0.0.1:8080/api
             '/api': {
 				// 代理目标路径  
-                target: 'http://127.0.0.1:8001',
+                // target: 'http://127.0.0.1:8001',
+				target: 'http://192.168.1.102:8001',
                 // 允许跨域
                 changeOrigin: true,
                 ws: true,
